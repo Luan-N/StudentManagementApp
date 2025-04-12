@@ -1,0 +1,48 @@
+# Compiled Java classes
+bin/
+*.class
+
+# IntelliJ IDEA project files
+.idea/
+*.iml
+
+# Eclipse project files
+.classpath
+.project
+.settings/
+
+# NetBeans project files
+nbproject/
+
+# Build output directories (common for other build tools)
+build/
+out/
+
+# Executable JAR files (if you build one directly in the project)
+*.jar
+
+# Dabase files
+*.db
+
+# Operating system specific files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Temporary files and directories
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+*.bak
+
+# VS Code specific files (optional, but can be useful)
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+
+# Libraries (if you're not using a dependency manager)
+lib/
