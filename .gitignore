@@ -38,11 +38,3 @@ temp/
 *.swp
 *.swo
 *.bak
-
-# VS Code specific files (optional, but can be useful)
-.vscode/settings.json
-.vscode/tasks.json
-.vscode/launch.json
-
-# Libraries (if you're not using a dependency manager)
-lib/
