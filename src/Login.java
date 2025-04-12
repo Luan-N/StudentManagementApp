@@ -9,9 +9,10 @@ public class Login extends JPanel implements ActionListener {
     private JPasswordField passwordField;
     private JButton loginButton;
     private JButton signupLink;
+    private App app; //Reference to the main app
 
-    public Login(ActionListener switchListener) {
-
+    public Login(App app) {
+        this.app = app; //Initialize the app reference
         //Layouts
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -31,7 +32,7 @@ public class Login extends JPanel implements ActionListener {
         signupLink.setForeground(Color.BLUE);
         signupLink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
-        signupLink.addActionListener(switchListener); // switchLisner(App.java) will be notified
+        signupLink.addActionListener(app); // switchLisner(App.java) will be notified
         loginButton.addActionListener(this);//This will be notified
 
         // Username
@@ -84,6 +85,7 @@ public class Login extends JPanel implements ActionListener {
 
             // If login is successful, show a success message
             JOptionPane.showMessageDialog(this, "Welcome " + username + "!");
+            app.showHomePanel(username); //Show the home panel with the username
         }
     }
 

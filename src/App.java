@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 public class App extends JFrame implements ActionListener {
 
+    public String currentUser = null; //Current user of the app
     private CardLayout cardLayout;
     private JPanel mainPanel;
     private Login loginPanel;
@@ -47,5 +48,14 @@ public class App extends JFrame implements ActionListener {
     public static void main(String[] args) {
         //Run the App
         SwingUtilities.invokeLater(() -> new App());
+       
+    }
+
+    //When the user is logged in we wawt to dispaly the home panel
+    public void showHomePanel(String username) {
+        currentUser = username; //Set the current user
+        HomePanel homePanel = new HomePanel(username); //Create the home panel with the username
+        mainPanel.add(homePanel, "homePanel"); //Add the home panel to the main panel
+        cardLayout.show(mainPanel, "homePanel"); //Show the home panel
     }
 }

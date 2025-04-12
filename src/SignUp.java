@@ -11,8 +11,11 @@ public class SignUp extends JPanel implements ActionListener {
     private JTextField lastNameField;
     private JButton signupButton;
     private JButton loginLink;
+    private App app; //Reference to the main app
 
-    public SignUp(ActionListener switchListener) {
+    public SignUp(App app) {
+        this.app = app; //Initialize the app reference
+        //Layouts
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
@@ -33,7 +36,7 @@ public class SignUp extends JPanel implements ActionListener {
         loginLink.setBackground(Color.WHITE);
         loginLink.setForeground(Color.BLUE);
         loginLink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        loginLink.addActionListener(switchListener); // Use the provided listener
+        loginLink.addActionListener(app); // Use the provided listener
         signupButton.addActionListener(this); // Use the provided listener
 
         // Username
@@ -104,6 +107,8 @@ public class SignUp extends JPanel implements ActionListener {
 
             // If sign up is successful, show a success message
             JOptionPane.showMessageDialog(this, "Welcome " + username + "!");
+            app.showHomePanel(username); // Show the home panel with the username
+
         }
     }
 
