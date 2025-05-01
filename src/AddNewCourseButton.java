@@ -3,12 +3,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-public class LogOutButton extends JButton implements ActionListener {
+public class AddNewCourseButton extends JButton implements ActionListener {
 
     private App app;
 
-    public LogOutButton(App app) {
-        super("Log Out"); // Set button text
+    public AddNewCourseButton(App app) {
+        super("Add new Course"); // Set button text
         this.app = app; // Initialize the app reference
 
         // Add action listener to handle log out action
@@ -17,7 +17,6 @@ public class LogOutButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        app.currentUser = null; // Clear the current user
-        app.showLoginPanel(); // Show the login panel again
+        //TODO: Implement the logic to add new course
     }
 }

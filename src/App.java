@@ -15,7 +15,7 @@ public class App extends JFrame implements ActionListener {
         // layouts
         setTitle("Template App");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 300);
+        setSize(500, 400);
         setLayout(new BorderLayout());
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
@@ -47,10 +47,11 @@ public class App extends JFrame implements ActionListener {
     public static void main(String[] args) {
         //Run the App
         SwingUtilities.invokeLater(() -> new App());
+        DatabaseUtilities.initializeDatabase(); // Initialize the database connection
        
     }
 
-    //When the user is logged in we want to dispaly the home panel
+    //When the user is logged in we want to display the home panel and store the username
     public void showHomePanel(String username) {
         currentUser = username; //Set the current user
         HomePanel homePanel = new HomePanel(this, username); //Create the home panel with the username

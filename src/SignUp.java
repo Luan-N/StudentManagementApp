@@ -5,10 +5,10 @@ import java.awt.event.ActionListener;
 
 public class SignUp extends JPanel implements ActionListener {
 
+    private static final String permissionCode = "1234"; //Permission code to create a staff account
     private JTextField usernameField;
     private JPasswordField passwordField;
-    private JTextField firstNameField;
-    private JTextField lastNameField;
+    private JTextField permissionField;
     private JButton signupButton;
     private JButton loginLink;
     private App app; //Reference to the main app
@@ -25,10 +25,8 @@ public class SignUp extends JPanel implements ActionListener {
         usernameField = new JTextField(20);
         JLabel passwordLabel = new JLabel("Password:");
         passwordField = new JPasswordField(20);
-        JLabel firstNameLabel = new JLabel("First Name:");
-        firstNameField = new JTextField(20);
-        JLabel lastNameLabel = new JLabel("Last Name:");
-        lastNameField = new JTextField(20);
+        JLabel perrmissionLabel = new JLabel("Permission Code:");
+        permissionField = new JTextField(20);
         signupButton = new JButton("Sign Up");
         loginLink = new JButton("To Login");
         loginLink.setBorderPainted(false);
@@ -53,19 +51,12 @@ public class SignUp extends JPanel implements ActionListener {
         gbc.gridx = 1;
         add(passwordField, gbc);
 
-        // First Name
+        // Permission Code
         gbc.gridx = 0;
         gbc.gridy = 2;
-        add(firstNameLabel, gbc);
+        add(perrmissionLabel, gbc);
         gbc.gridx = 1;
-        add(firstNameField, gbc);
-
-        // Last Name
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        add(lastNameLabel, gbc);
-        gbc.gridx = 1;
-        add(lastNameField, gbc);
+        add(permissionField, gbc);
 
         // Buttons
         gbc.gridx = 0;
@@ -84,58 +75,39 @@ public class SignUp extends JPanel implements ActionListener {
             // Handle sign up logic here
             String username = usernameField.getText();
             String password = new String(passwordField.getPassword());
-            String firstName = firstNameField.getText();
-            String lastName = lastNameField.getText();
+            String permission = permissionField.getText();
 
             // Check for empty fields
-            if (username.isEmpty() || password.isEmpty() || firstName.isEmpty() || lastName.isEmpty()) {
+            if (username.isEmpty() || password.isEmpty() || permission.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "All fields are required!");
                 return;
             }
+
+            // Check if the permission code is valid
+            if (!permission.equals(permissionCode)) {//For simplicity, 1234 is the permission code to create a staff account
+                JOptionPane.showMessageDialog(this, "Invalid permission code!");
+                return;
+            }
+
             // Check if the username already exists
             String existingPassword = DatabaseUtilities.getPasswordByUsername(username);
             if (existingPassword != null) {
-                JOptionPane.showMessageDialog(this, "Username already exists!");
+                JOptionPane.showMessageDialog(this, "Username already exists! Please choose a different username.");
                 return;
             }
             // Add the user to the database
-            boolean userAdded = DatabaseUtilities.addUser(username, password);
-            if (!userAdded) {
-                JOptionPane.showMessageDialog(this, "Error adding user!");
+            if (!DatabaseUtilities.addUser(username, password)) {
+                JOptionPane.showMessageDialog(this, "Error adding user! Please try again.");
                 return;
             }
 
             //reset the fields
-            usernameField.setText("");
-            passwordField.setText("");
-            firstNameField.setText("");
-            lastNameField.setText("");
+            usernameField.setText(""); passwordField.setText(""); permissionField.setText("");
 
             // If sign up is successful, show a success message
             JOptionPane.showMessageDialog(this, "Welcome " + username + "!");
             app.showHomePanel(username); // Show the home panel with the username
 
         }
-    }
-
-    //Getters
-    public JTextField getUsernameField() {
-        return usernameField;
-    }
-
-    public JPasswordField getPasswordField() {
-        return passwordField;
-    }
-
-    public JTextField getFirstNameField() {
-        return firstNameField;
-    }
-
-    public JTextField getLastNameField() {
-        return lastNameField;
-    }
-
-    public JButton getSignupButton() {
-        return signupButton;
     }
 }

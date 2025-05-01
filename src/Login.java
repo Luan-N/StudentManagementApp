@@ -84,25 +84,11 @@ public class Login extends JPanel implements ActionListener {
             }
 
             //reset the fields
-            usernameField.setText("");
-            passwordField.setText("");
+            usernameField.setText(""); passwordField.setText("");
 
             // If login is successful, show a success message
             JOptionPane.showMessageDialog(this, "Welcome " + username + "!");
             app.showHomePanel(username); //Show the home panel with the username
         }
-    }
-
-    //Getters methods
-    public JTextField getUsernameField() {
-        return usernameField;
-    }
-
-    public JPasswordField getPasswordField() {
-        return passwordField;
-    }
-
-    public JButton getLoginButton() {
-        return loginButton;
     }
 }

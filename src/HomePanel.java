@@ -1,8 +1,10 @@
+import javax.smartcardio.Card;
 import javax.swing.*;
 import java.awt.*;
 
 public class HomePanel extends JPanel {
     private App app; // Reference to the main app
+    private CardLayout cardLayout;
 
     public HomePanel(App app, String username) {
         this.app = app; // Initialize the app reference
@@ -17,8 +19,15 @@ public class HomePanel extends JPanel {
         controlPanel.setBackground(Color.LIGHT_GRAY);
 
         //Display panel for showing content
-        JPanel displayPanel = new JPanel();
+        //Create a card layout for the display panel
+        cardLayout = new CardLayout();
+        JPanel displayPanel = new JPanel(cardLayout);
         displayPanel.setBackground(Color.WHITE);
+
+        // Add the StudentListPanel to the display panel
+        StudentListPanel studentListPanel = new StudentListPanel();
+        displayPanel.add(studentListPanel, "Student List");
+        cardLayout.show(displayPanel, "Student List");
 
         // Create split pane with horizontal split
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, controlPanel, displayPanel);
@@ -28,6 +37,17 @@ public class HomePanel extends JPanel {
         splitPane.setOneTouchExpandable(true);
 
         add(splitPane, BorderLayout.CENTER);
+
+        //Control Buttons
+        controlPanel.add(new ViewAllCoursesButton(app));
+        controlPanel.add(new ViewAllStudentsButton(app));
+        controlPanel.add(new ViewStudentInfoButton(app));
+        controlPanel.add(new AddNewCourseButton(app));
+        controlPanel.add(new RegisterNewStudentButton(app));
+        controlPanel.add(new AddCourseToStudentButton(app));
+        controlPanel.add(new DropCourseFromStudentButton(app));
+        controlPanel.add(new CompleteCourseForStudentButton(app));
         controlPanel.add(new LogOutButton(app));
+        controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
     }
 }
