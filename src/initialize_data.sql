@@ -32,22 +32,22 @@ INSERT INTO Student (first_name, last_name, GPA, units_completed, date_of_birth,
   ('Sean', 'Hampton', 3.33, 49, '1998-08-19', '2022-09-06', 'graduated'),
   ('Andrew', 'Acosta', 2.18, 84, '2004-09-07', '2024-09-24', 'dimissed');
 
-INSERT INTO Course (course_id, course_name, course_description, units, capacity) VALUES
-  (1, 'Introduction to Psychology', 'An overview of major concepts in psychology including cognition, emotion, and behavior.', 3, 40),
-  (2, 'Data Structures and Algorithms', 'Covers linked lists, trees, sorting algorithms, and algorithmic complexity.', 4, 35),
-  (3, 'Calculus I', 'Differential and integral calculus of one variable.', 4, 45),
-  (4, 'Principles of Economics', 'Basic economic principles including supply, demand, and market structures.', 3, 50),
-  (5, 'Modern World History', 'A survey of global historical events from the 18th century to present.', 3, 38),
-  (6, 'Organic Chemistry I', 'Structure, nomenclature, and reactions of organic compounds.', 4, 42),
-  (7, 'Introduction to Sociology', 'Foundations of sociological thought and social institutions.', 3, 30),
-  (8, 'Environmental Science', 'Study of environmental systems, sustainability, and human impact.', 3, 36),
-  (9, 'Computer Networks', 'Fundamentals of networking protocols and architecture.', 4, 34),
-  (10, 'Public Speaking', 'Techniques and strategies for effective public communication.', 2, 25),
-  (11, 'Philosophy of Mind', 'Explores consciousness, perception, and theories of mind.', 3, 28),
-  (12, 'Artificial Intelligence', 'Concepts and techniques in machine learning and AI systems.', 4, 40),
-  (13, 'Microbiology', 'Study of microorganisms and their roles in health and disease.', 4, 32),
-  (14, 'Linear Algebra', 'Matrix theory, vector spaces, and linear transformations.', 3, 30),
-  (15, 'Software Engineering', 'Principles and practices of software design and development.', 4, 50);
+INSERT INTO Course (course_name, course_description, units, capacity) VALUES
+  ('Data Structures and Algorithms', 'Covers linked lists, trees, sorting algorithms, and algorithmic complexity.', 4, 35),
+  ('Introduction to Psychology', 'An overview of major concepts in psychology including cognition, emotion, and behavior.', 3, 40),
+  ('Calculus I', 'Differential and integral calculus of one variable.', 4, 45),
+  ('Principles of Economics', 'Basic economic principles including supply, demand, and market structures.', 3, 50),
+  ('Modern World History', 'A survey of global historical events from the 18th century to present.', 3, 38),
+  ('Organic Chemistry I', 'Structure, nomenclature, and reactions of organic compounds.', 4, 42),
+  ('Introduction to Sociology', 'Foundations of sociological thought and social institutions.', 3, 30),
+  ('Environmental Science', 'Study of environmental systems, sustainability, and human impact.', 3, 36),
+  ('Computer Networks', 'Fundamentals of networking protocols and architecture.', 4, 34),
+  ('Public Speaking', 'Techniques and strategies for effective public communication.', 2, 25),
+  ('Philosophy of Mind', 'Explores consciousness, perception, and theories of mind.', 3, 28),
+  ('Artificial Intelligence', 'Concepts and techniques in machine learning and AI systems.', 4, 40),
+  ('Microbiology', 'Study of microorganisms and their roles in health and disease.', 4, 32),
+  ('Linear Algebra', 'Matrix theory, vector spaces, and linear transformations.', 3, 30),
+  ('Software Engineering', 'Principles and practices of software design and development.', 4, 50);
 
 INSERT INTO Enrollment (student_id, course_id, course_status, grade) VALUES
   (1, 12, 'in_progress', 'D'),

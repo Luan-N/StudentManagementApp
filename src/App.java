@@ -13,9 +13,9 @@ public class App extends JFrame implements ActionListener {
 
     public App() {
         // layouts
-        setTitle("Template App");
+        setTitle("Student Management App");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 400);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLayout(new BorderLayout());
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);

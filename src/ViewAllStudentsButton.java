@@ -5,11 +5,11 @@ import javax.swing.JButton;
 
 public class ViewAllStudentsButton extends JButton implements ActionListener {
 
-    private App app;
+    private HomePanel homePanel; // Reference to the HomePanel
 
-    public ViewAllStudentsButton(App app) {
+    public ViewAllStudentsButton(HomePanel homePanel) {
         super("View All Students"); // Set button text
-        this.app = app; // Initialize the app reference
+        this.homePanel = homePanel; // Initialize the panel reference
 
         // Add action listener to handle log out action
         this.addActionListener(this);
@@ -18,5 +18,6 @@ public class ViewAllStudentsButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         //TODO: Implement the logic to view all students
+        homePanel.showStudentList(); // Call the method to show all students
     }
 }

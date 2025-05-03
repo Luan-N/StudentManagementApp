@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Student (
 );
 
 CREATE TABLE IF NOT EXISTS Course (
-    course_id INTEGER PRIMARY KEY,
+    course_id INTEGER PRIMARY KEY AUTOINCREMENT,
     course_name TEXT NOT NULL UNIQUE,
     course_description TEXT NOT NULL DEFAULT 'No description provided',
     units INTEGER NOT NULL CHECK(units > 0) DEFAULT 0,
