@@ -1,18 +1,36 @@
-## Getting Started
+# Student Course Enrollment Management System
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## 📘 Project Overview
 
-## Folder Structure
+This project is a simple **Java application** that manages users, students, courses, and their enrollments using a **SQLite database**. It demonstrates basic operations like adding records, updating data, deleting entries, and enforcing constraints such as foreign keys and field validation via JDBC.
 
-The workspace contains two folders by default, where:
+---
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## 🛠️ Setup & Running the Project
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Follow these steps to set up and run the project in a development environment using **Visual Studio Code**:
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+### 1. Install Required Software
+- **Java Development Kit (JDK)** – Download and install [JDK 17+](https://jdk.java.net/)
+- **Visual Studio Code** – [Download here](https://code.visualstudio.com/)
+- **Extension Pack for Java** – Install it from the VSCode Extensions Marketplace
 
-## Dependency Management
+### 2. Configure SQLite JDBC Driver
+- Download the SQLite JDBC driver (version `3.49.1.0`) from [this GitHub release page](https://github.com/xerial/sqlite-jdbc/releases)
+- Create a `lib/` folder in your project root
+- Place the downloaded `.jar` file (`sqlite-jdbc-3.49.1.0.jar`) into the `lib` folder
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+### 3. Configure VS Code Project Settings
+Make sure the following content exists in `.vscode/settings.json`:
+
+```json
+{
+    "java.project.sourcePaths": [
+        "src"
+    ],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/sqlite-jdbc-3.49.1.0.jar"
+    ]
+}
+

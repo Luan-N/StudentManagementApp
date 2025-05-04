@@ -21,9 +21,6 @@ out/
 # Executable JAR files (if you build one directly in the project)
 *.jar
 
-# Dabase files
-*.db
-
 # Operating system specific files
 .DS_Store
 Thumbs.db

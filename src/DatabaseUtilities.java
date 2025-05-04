@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 
 public class DatabaseUtilities {
 
-    private static final String DB_FILE_PATH = "mydatabase.db";// We will use one single database for the entire app
+    private static final String DB_FILE_PATH = "db/mydatabase.db";// We will use one single database for the entire app
 
     private static Connection getConnection() throws SQLException {
         String url = "jdbc:sqlite:" + DB_FILE_PATH;
@@ -35,7 +35,6 @@ public class DatabaseUtilities {
             for (String sql : schemaSQL.split(";")) {
                 sql = sql.trim();
                 if (!sql.isEmpty()) {
-                    System.out.println("Executing SQL: " + sql + ";"); // helpful debug
                     stmt.execute(sql); 
                 }
             }
