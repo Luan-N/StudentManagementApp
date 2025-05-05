@@ -1,49 +1,49 @@
-PRAGMA foreign_keys = ON;
-
--- Add users
-INSERT INTO User (username, password) VALUES ('user1', 'pass1');
-INSERT INTO User (username, password) VALUES ('user2', 'pass2');
-
--- Add students
-INSERT INTO Student (first_name, last_name, GPA, units_completed, date_of_birth, enrollment_date, enrollment_status)
-VALUES ('Alice', 'Smith', 3.2, 60, '2001-03-15', '2024-01-10', 'active'); -- valid
-INSERT INTO Student (first_name, last_name, GPA, units_completed, date_of_birth, enrollment_date, enrollment_status)
-VALUES ('Bob', 'Jones', 2.8, 30, '2002-06-20', '2023-09-01', 'graduated'); -- valid
-
--- Add courses
+-- 4) Add Course
 INSERT INTO Course (course_name, course_description, units, capacity)
-VALUES ('Intro to Databases', 'Covers SQL and relational design.', 3, 35); -- valid
-INSERT INTO Course (course_name, course_description, units, capacity)
-VALUES ('Software Testing', 'Covers testing theory and automation.', 4, 30); -- valid
+VALUES ('Quantum Computing', 'Intro to quantum circuits', 4, 30);
 
--- Add enrollments
-INSERT INTO Enrollment (student_id, course_id, course_status, grade)
-VALUES (15, 15, 'in_progress', 'B'); -- valid
-INSERT INTO Enrollment (student_id, course_id, course_status, grade)
-VALUES (2, 2, 'completed', 'A'); -- valid
+-- 5) Remove Course
+DELETE FROM Course WHERE course_name = 'Quantum Computing';
 
--- Invalid inserts
+-- 6) Register Student
 INSERT INTO Student (first_name, last_name, GPA, units_completed, date_of_birth, enrollment_date, enrollment_status)
-VALUES ('Invalid', 'GPA', 4.5, 20, '2001-01-01', '2023-09-01', 'active'); -- GPA too high
-INSERT INTO Student (first_name, last_name, GPA, units_completed, date_of_birth, enrollment_date, enrollment_status)
-VALUES ('Invalid', 'Status', 3.0, 40, '2000-01-01', '2023-09-01', 'paused'); -- bad status
-INSERT INTO Course (course_name, course_description, units, capacity)
-VALUES ('Intro to Databases', 'Duplicate name test.', 3, 30); -- duplicate name
+VALUES ('Bob', 'Builder', 3.5, 0, '2004-01-01', CURRENT_DATE, 'active');
+
+-- 7) Dismiss Student
+DELETE FROM Student
+WHERE first_name = 'Bob' AND last_name = 'Builder';
+
+-- 8) Add Course to Student
 INSERT INTO Enrollment (student_id, course_id, course_status, grade)
-VALUES (1, 2, 'completed', 'AB'); -- grade too long
-INSERT INTO Enrollment (student_id, course_id, course_status, grade)
-VALUES (999, 1, 'in_progress', 'C'); -- non-existent student
+VALUES (1, 5, 'in_progress', 'F');
 
--- Updates
-UPDATE Student SET GPA = 3.5 WHERE student_id = 1; -- valid update
-UPDATE Enrollment SET grade = 'A' WHERE student_id = 1 AND course_id = 1; -- valid update
-UPDATE Enrollment SET course_status = 'withdrawn' WHERE student_id = 2 AND course_id = 2; -- invalid status
+-- 9) Drop Course from Student
+DELETE FROM Enrollment WHERE student_id = 1 AND course_id = 5;
 
--- Deletes (test cascade)
-DELETE FROM Course WHERE course_id = 2; -- should delete enrollment too
-DELETE FROM Student WHERE student_id = 1; -- should delete enrollment too
+-- 10) Complete Course for Student
+UPDATE Enrollment
+SET course_status = 'completed', grade = 'A'
+WHERE student_id = 1 AND course_id = 2;
 
--- Final checks
+-- 11) Login
+SELECT * FROM User WHERE username = 'houstongregory' AND password = 'password1';
+
+-- 12) Sign Up
+INSERT INTO User (username, password) VALUES ('newuser', 'securepass');
+
+--List Students
 SELECT * FROM Student;
+SELECT first_name, last_name, units_completed, enrollment_status FROM Student;
+
+--List Courses
 SELECT * FROM Course;
-SELECT * FROM Enrollment;
+SELECT course_name, course_description, units, capacity FROM Course;
+
+--List Users
+SELECT * FROM User;
+
+--View Student Info
+SELECT * FROM Student WHERE student_id = 1;
+SELECT course_name, units, course_status, grade
+FROM Course, Enrollment
+WHERE Course.course_id = Enrollment.course_id AND Enrollment.student_id = 1;

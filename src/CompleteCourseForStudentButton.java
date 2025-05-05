@@ -8,7 +8,7 @@ public class CompleteCourseForStudentButton extends JButton implements ActionLis
     private App app;
 
     public CompleteCourseForStudentButton(App app) {
-        super("View All Courses"); // Set button text
+        super("Complete Course For Student"); // Set button text
         this.app = app; // Initialize the app reference
 
         // Add action listener to handle log out action
