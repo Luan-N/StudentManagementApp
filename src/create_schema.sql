@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS Student (
     units_completed INTEGER NOT NULL DEFAULT 0 CHECK(units_completed >= 0),
     date_of_birth DATE NOT NULL DEFAULT '2000-01-01',
     enrollment_date DATE NOT NULL DEFAULT CURRENT_DATE,
-    enrollment_status TEXT NOT NULL DEFAULT 'active' CHECK(enrollment_status IN ('dimissed', 'active', 'graduated'))
+    enrollment_status TEXT NOT NULL DEFAULT 'active' CHECK(enrollment_status IN ('active', 'graduated'))
 );
 
 CREATE TABLE IF NOT EXISTS Course (

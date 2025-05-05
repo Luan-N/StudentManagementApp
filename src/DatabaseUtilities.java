@@ -18,7 +18,7 @@ public class DatabaseUtilities {
         Connection conn = DriverManager.getConnection(url);
 
         // Enable foreign key support after connection, disabled by default for sqlite
-        try (Statement stmt = conn.createStatement()) {
+        try (Statement stmt = conn.createStatement()){
             stmt.execute("PRAGMA foreign_keys = ON;");
         }
 
