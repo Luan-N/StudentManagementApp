@@ -13,7 +13,7 @@ public class DatabaseUtilities {
 
     private static final String DB_FILE_PATH = "db/mydatabase.db";// We will use one single database for the entire app
 
-    private static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         String url = "jdbc:sqlite:" + DB_FILE_PATH;
         Connection conn = DriverManager.getConnection(url);
 
